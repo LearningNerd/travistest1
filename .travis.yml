@@ -1,15 +1,10 @@
 language: node_js
 node_js:
   - 8
-script: echo $TEST
 env:
   - TEST=BLAH
+script: | 
+  echo $TEST
+  echo "hello"
+  echo "world"
 
-    # language: node_js
-    # node_js:
-    # - "stable"
-    # script: gulp travis
-    # env:
-    # - NODE_ENV="development"
-    # services:
-    # - mongodb
