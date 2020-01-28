@@ -2,8 +2,9 @@ language: node_js
 node_js:
   - 8
 env:
-  - SENTRY_ORG=liz
-  - SENTRY_PROJECT=travistest1
+  global:
+    - SENTRY_ORG=liz
+    - SENTRY_PROJECT=travistest1
 script: | 
   curl -sL https://sentry.io/get-cli/ | bash
   export SENTRY_RELEASE=$(sentry-cli releases propose-version)
