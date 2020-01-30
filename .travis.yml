@@ -5,6 +5,8 @@ jobs:
   include:
     - name: Run tests
       script: echo "running a fake test"
+    - name: Run this second job
+      script: echo "second job here"
     - name: Create Sentry Release on push to master
       if: (type = push AND branch = master)
       env: SENTRY_ORG=liz SENTRY_PROJECT=travistest1
