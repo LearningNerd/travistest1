@@ -5,7 +5,7 @@ jobs:
   include:
     - name: Run tests
       script: echo "running a fake test"
-    - name: Run this second job
+    - name: Run this second job tooooo
       script: echo "second job here"
     - name: Create Sentry Release on push to master
       if: (type = push AND branch = master)
