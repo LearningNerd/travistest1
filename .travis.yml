@@ -3,7 +3,7 @@ node_js:
   - 8
 jobs:
   include:
-    - name: Run tests
+    - name: Run tests always
       script: echo "running a fake test"
     - name: Create Sentry Release on push to master
       if: (type = push AND branch = master)
