@@ -1,12 +1,18 @@
 language: node_js
 node_js:
   - 8
-env:
-  - SENTRY_ORG=liz SENTRY_PROJECT=travistest1
-script: | 
-  curl -sL https://sentry.io/get-cli/ | bash
-  export SENTRY_RELEASE=$(sentry-cli releases propose-version)
-  echo $SENTRY_RELEASE
-  sentry-cli releases new -p $SENTRY_PROJECT $SENTRY_RELEASE
-  sentry-cli releases set-commits --auto $SENTRY_RELEASE
-  sentry-cli releases finalize $SENTRY_RELEASE
+jobs:
+  include:
+    - name: Run tests
+      script: echo "running a fake test"
+    - name: Create Sentry Release on push to master
+      if: (type = push AND branch = master)
+      env: SENTRY_ORG=liz SENTRY_PROJECT=travistest1
+      script: | 
+        curl -sL https://sentry.io/get-cli/ | bash
+        export SENTRY_RELEASE=$(sentry-cli releases propose-version)
+        echo $SENTRY_RELEASE
+        sentry-cli releases new -p $SENTRY_PROJECT $SENTRY_RELEASE
+        sentry-cli releases set-commits --auto $SENTRY_RELEASE
+        sentry-cli releases finalize $SENTRY_RELEASE
+ 
