@@ -3,7 +3,7 @@ node_js:
   - 8
 jobs:
   include:
-    - name: Run tests
+    - name: Run tests always
       script: echo "running a fake test"
     - name: Run this second job
       script: echo "second job here"
